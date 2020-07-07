@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<body>
+    <script type="module">
+        // named export
+        import { sayHi } from './say.js';
+        import * as say from './say.js';
+        console.log(say);
+        // 📁 main.js
+        import { sayHi as hi, sayBye as bye } from './say.js';
+
+        hi('John'); // Hello, John!
+        bye('John'); // Bye, John!
+        alert(import.meta.url); // script url (url of the html page for an inline script)
+
+        document.body.innerHTML = sayHi('John');
+    </script>
+    <!-- module scripts are always deferred -->
+    <script type="module" src="hello.js"></script>
+</body>
