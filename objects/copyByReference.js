@@ -19,7 +19,13 @@ console.log(user.name); // 'Pete', changes are seen from the "user" reference
 const new1 = { new1: 1 };
 const new2 = { new2: 2 };
 const obj = { age: 20 };
-Object.assign(obj, new1, { age: 21 });
+const newObj = Object.assign({}, obj);
+console.log(newObj)
+newObj.age = 99;
+console.log(newObj)
+console.log(obj)
+
+Object.assign(obj, new1, { age: 21 }, {age: 31}, {new1: 3});
 console.log(obj); // the properties in new1 and new2 wil;l; be added to obj
 // if the properties exist in the target then it will br over written by the properties from the sources
 const user2 = {
@@ -27,16 +33,51 @@ const user2 = {
   age: 30
 };
 
-const clone = { ...user2 };
+const clone = { ...user2, name: 'TJ' };
+console.log(clone)
 clone.name = 'ade';
 console.log(clone);
 console.log(user2);
 
+let nestedObj = {
+    ...user,
+    relatives: {
+        cousins: {
+            jide: 'dare'
+        },
+        uncles: {
+            big: 'daddy'
+        }
+    }
+}
+
+// reason for deep cloning
+console.log(nestedObj)
+let objAssignClone = Object.assign({}, nestedObj)
+let closeNested = {...nestedObj}
+console.log(closeNested)
+console.log(objAssignClone)
+closeNested.relatives.cousins.jide = 'odunayo';
+console.log(nestedObj)
+
 // deep clone
 const deepObj = {};
 for (const key in user2) {
-  deepObj[key] = user2[key];
+    deepObj[key] = user2[key];
 }
+
+const deepNestedObj = {};
+
+for (const key in nestedObj) {
+    if (nestedObj.hasOwnProperty(key)) {
+        const eachValue = nestedObj[key];
+        deepNestedObj[key] = eachValue;
+    }
+}
+
+console.log(deepNestedObj)
+deepNestedObj.relatives.cousins.jide = 'dare';
+console.log(nestedObj)
 
 console.log(deepObj);
 

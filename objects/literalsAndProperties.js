@@ -1,8 +1,15 @@
 // declare an object variable(literal and object constructor)
 // properties - “key(string and called propertyName): value”
 // removing a property
+const ob = {
+    b:1, a: 2, ['cons'+'ole']: 3
+}
+
+console.log(ob)
+
 const user = new Object({
-  name: 'ade'
+    name: 'ade',
+    age: 99
 }); // "object constructor" syntax
 
 console.log(user);
@@ -18,5 +25,20 @@ const xyz = Object.create({
 console.log(xyz);
 
 // delete property
-delete user2.age;
-console.log(user2.age);
+delete user.age;
+console.log(user.age);
+console.log(user);
+user.age = 90;
+console.log(user);
+let objectZ = {};
+objectZ.name = 'xyz';
+objectZ.age = 999;
+console.log(objectZ);
+
+/* let object = {
+    key/property: value,
+    key/property: value,
+    key/property: value,
+    key/property: value,
+    key/property: value,
+} */

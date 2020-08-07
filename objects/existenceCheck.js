@@ -1,5 +1,11 @@
 // A notable objects feature is that it’s possible to access any property.
-const user = {};
+const user = {
+    abuse: 'bastard'
+};
+
+// user.abuse = 'stupid'
+
+console.log('abuse' in user ? `hello ${user.abuse}` : 'no abuse')
 
 console.log(user.noSuchProperty === undefined); // true means "no such property"
 

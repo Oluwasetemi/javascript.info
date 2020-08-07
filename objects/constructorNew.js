@@ -5,14 +5,16 @@
 // They should be executed only with "new" operator.
 function User(name, isAdmin = false) {
   this.name = name;
-  this.isAdmin = isAdmin;
+this.isAdmin = isAdmin;
+
 }
 
-const user = new User('Jack', true);
+const jack = new User('Jack', true);
 const president = new User('Trump');
-
-console.log(user.name); // Jack
-console.log(user.isAdmin); // false
+jack
+president
+console.log(jack.name); // Jack
+console.log(jack.isAdmin); // false
 
 // When a function is executed with new, it does the following steps:
 
@@ -22,13 +24,13 @@ console.log(user.isAdmin); // false
 
 // constructor function code example
 function User2(name) {
-  //   this = {};  (implicitly)
+    // const this = {};  (implicitly)
 
   // add properties to this
   this.name = name;
   this.isAdmin = false;
 
-  //   return this;  (implicitly)
+    // return this;  (implicitly)
 }
 
 // Constructor mode test: new.target
@@ -77,6 +79,11 @@ function User4(name) {
 }
 
 const john2 = new User4('John');
+let obj = new Number(5);
+console.log(typeof obj)
+console.log(Object(5) instanceof Number)
+
+obj instanceof Object;
 
 console.log(john2 instanceof User4);
 

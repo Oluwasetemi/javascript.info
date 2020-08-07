@@ -2,10 +2,11 @@
 // ToPrimitive
 // All objects are true in a boolean context. There are only numeric and string conversions.
 // The numeric conversion happens when we subtract objects or apply mathematical functions. For instance, Date objects (to be covered in the chapter Date and time) can be subtracted, and the result of date1 - date2 is the time difference between two dates.
-// As for the string conversion – it usually happens when we output an object like alert(obj) and in similar contexts.
+// As for the string conversion – it usually happens when we output an object like console.log(obj) and in similar contexts.
 
+let obj = {}
 // output
-alert(obj);
+console.log(obj);
 
 // using object as a property key
 anotherObj[obj] = 123;
@@ -57,9 +58,9 @@ let user = {
 };
 // example
 // conversions demo:
-alert(user); // hint: string -> {name: "John"}
-alert(+user); // hint: number -> 1000
-alert(user + 500); // hint: default -> 1500
+console.log(user); // hint: string -> {name: "John"}
+console.log(+user); // hint: number -> 1000
+console.log(user + 500); // hint: default -> 1500
 
 // toString/valueOf
 
@@ -85,9 +86,9 @@ let user3 = {
 
 };
 
-alert(user3); // toString -> {name: "John"}
-alert(+user3); // valueOf -> 1000
-alert(user3 + 500); // valueOf -> 1500
+console.log(user3); // toString -> {name: "John"}
+console.log(+user3); // valueOf -> 1000
+console.log(user3 + 500); // valueOf -> 1500
 // Return types
 // returning primitives
 // Further conversions

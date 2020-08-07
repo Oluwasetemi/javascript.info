@@ -26,9 +26,11 @@ const user = {
   name: 'John'
 };
 
-const symbolId = Symbol('id');
+const symbolId = Symbol('iwerd');
+const symbolIf = Symbol('iwerd');
 
 user[symbolId] = 4;
+user[symbolIf] = 5;
 
 console.log(user); // we can access the data using the symbol as the key
 
@@ -40,18 +42,21 @@ const testUser = {
   // symbol id uses the object literal
   [idLiteral]: 123 // not "id: 123"
 };
-
-/*
+console.log(testUser[idLiteral])
+console.log(user[symbolIf])
 // symbols are skipped by for in loop
-let id = Symbol("id");
-let user = {
-  name: "John",
-  age: 30,
-  [id]: 123
+let idAgain2 = Symbol("id");
+let user10 = {
+    name: "John",
+    age: 30,
+    [idAgain2]: 123
 };
 
-for (let key in user) console.log(key); // name, age (no symbols)
+console.log(user10[idAgain2])
 
+for (let key in user10) console.log(key); // name, age (no symbols)
+
+/*
 // the direct access by the symbol works
 console.log("Direct: " + user[id]);
 // Object.keys(user) also ignores them but Object.assign copies both string and symbols

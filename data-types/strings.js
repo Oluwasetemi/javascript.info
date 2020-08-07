@@ -1,7 +1,7 @@
 /* eslint-disable */
 // Quotes
 // all the way to declare a string single quotes, double quotes, backticks
-const single = 'single-quoted';
+const single = 'single\'s-quoted';
 const double = 'double-quoted';
 
 const backticks = `backticks`; // multiline support
@@ -9,6 +9,7 @@ const backticks = `backticks`; // multiline support
 function sum(a, b) {
   return a + b;
 }
+
 
 console.log(`1 + 2 = ${sum(1, 2)}.`); // 1 + 2 = 3.
 
@@ -26,6 +27,7 @@ console.log(str.charAt(0)); // H
 
 // the last character
 console.log(str[str.length - 1]); // o
+
 // Strings are immutable
 const str2 = 'Hi';
 
@@ -43,6 +45,10 @@ const str3 = 'Widget with id';
 
 console.log(str3.indexOf('Widget')); // 0, because 'Widget' is found at the beginning
 console.log(str3.indexOf('widget')); // -1, not found, the search is case-sensitive
+
+if (str.indexOf('w') === -1) {
+  throw new error('W does not exist')
+}
 
 console.log(str3.indexOf('id')); // 1, "id" is found at the position 1 (..idget with id)
 
@@ -64,6 +70,8 @@ while (true) {
   console.log(`Found at ${foundPos}`);
   pos = foundPos + 1; // continue the search from the next position
 }
+
+// str5.matchAll(/as/i)
 // another version
 const str6 = 'As sly as a fox, as strong as an ox';
 const target2 = 'as';
@@ -153,7 +161,7 @@ console.log( str );
 console.log( '𝒳'.length ); // 2, MATHEMATICAL SCRIPT CAPITAL X
 console.log( '🧘🏼‍♂️'.length ); // 2, FACE WITH TEARS OF JOY
 console.log('𩷶'.length); // 2, a rare Chinese hieroglyph
-
+let str = '    hello     '
 // str.trim()
 str.trim()
 // str.repeat()

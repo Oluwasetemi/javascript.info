@@ -10,7 +10,7 @@ user.sayHi = function() {
   console.log('Hello!');
 };
 
-user;
+console.log(user);
 
 user.sayHi(); // Hello!
 
@@ -24,13 +24,15 @@ user.sayHi = sayHi;
 const user2 = {
   name: 'John',
   age: 30,
-  sayHi() {
+  sayHi: () => {
     console.log('Hello!');
   }
 };
 
 user2.sayHi(); // Hello!
 
+// what a method - a function inside an object
+// this - is the object that owns the method
 // “this” in methods - to access an object property with a method you need the this keyWorld
 const user3 = {
   name: 'John',
@@ -40,10 +42,20 @@ const user3 = {
     // "this" is the "current object"
     console.log(this);
     console.log(this.name);
-  }
+  },
+  sayHello() {
+    // "this" is the "current object"
+    console.log(this);
+    console.log(this.name);
+  },
 };
 
+
+var school = 'clinton'
+console.log()
+
 user3.sayHi();
+user3.sayHello();
 
 // why this?
 let user4 = {
@@ -57,13 +69,15 @@ let user4 = {
 
 user4.sayHi();
 const new2 = user4;
-user4 = Object(null);
+// user4 = Object(null);
 
-new2.name = 'ade';
+// new2.name = 'ade';
+console.log(new2)
 new2.sayHi();
-new2.sayHi();
+// new2.sayHi();
 
 const admin = user4;
+admin
 
 user4 = null; // overwrite to make things obvious
 
@@ -105,10 +119,10 @@ const user5 = {
   }
 };
 
-user5.hi(); // John (the simple call works)
+// user5.hi(); // John (the simple call works)
 
 // now let's call user.hi or user.bye depending on the name
-// (user5.name === 'John' ? user5.hi : user5.bye)(); // Error! // ternary operator, binary, unary ops
+(user5.name === 'John' ? user5.hi : user5.bye)(); // Error! // ternary operator, binary, unary ops
 // user5.name === 'John' ? user5.hi() : user5.bye(); // Error! // ternary operator, binary, unary ops
 
 // reason for error

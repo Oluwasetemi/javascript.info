@@ -55,6 +55,7 @@ let user = new User("John");
 user.sayHi();
 
 */
+
 // What is a class?
 // Not just a syntactic sugar
 // Class Expression
@@ -96,6 +97,12 @@ const obj12 = {
     },
     get getName() {
         return this.name
+    },
+    set setAge(value) {
+        this.age = value;
+    },
+    get getAge() {
+        return this.age
     }
 }
 
@@ -123,7 +130,8 @@ class User4 {
 }
 
 let userObj = new User4('John');
-userObj.setName = '2qq';
+console.log()
+// userObj.setName = '2qq';
 userObj
 console.log(userObj.getName); // John
 
@@ -142,6 +150,7 @@ class User5 {
 }
 
 new User5().sayHi();
+
 // Class properties
 class User6 {
   name = 'Oluwasetemi';
@@ -193,8 +202,8 @@ rabbit = {
 }
 
 Object.create()
-Object.getPrototype
 Object.setPrototype
+Object.getPrototype
 
 */
 
@@ -489,8 +498,8 @@ class CoffeeMachine4 {
 let coffeeMachine4 = new CoffeeMachine4();
 
 // can't access privates from outside of the class
-coffeeMachine4.#checkWater(); // Error
-coffeeMachine4.#waterLimit = 1000; // Error */
+// coffeeMachine4.#checkWater(); // Error
+// coffeeMachine4.#waterLimit = 1000; // Error */
 /*
 class CoffeeMachine6 {
 
@@ -666,6 +675,7 @@ Object.assign(UserExample.prototype, sayHiMixin2);
 
 // now User can say hi
 new UserExample("Dude").sayHi(); // Hello Dude!
+*/
 
 // Example
 let eventMixin = {

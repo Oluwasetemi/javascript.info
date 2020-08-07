@@ -7,6 +7,8 @@ const obj = {
   'like lion': false
 };
 
+obj['name']
+
 obj['first-name'];
 // obj.name;
 // obj.age;
@@ -15,8 +17,8 @@ obj['first-name'];
 
 // NB- always use the square bracket notation whenever you need to do runtime or user input related things
 
-// computed properties
-const computed = {
+    // computed properties
+    const computed = {
   [`${'value'}`]: 2,
   [`${2 + 2}`]: 3,
   [`${'value 3'}`]: 4
