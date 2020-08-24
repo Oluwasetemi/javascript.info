@@ -8,6 +8,7 @@ const prices = {
 };
 
 const result = Object.entries(prices);
+
 console.log(result);
 
 console.log(Object.fromEntries(result));

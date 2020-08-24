@@ -9,6 +9,8 @@ const arr = ['Ojo', 'Oluwasetemi'];
 // and surname = arr[1]
 const [firstName, surname] = arr;
 
+// const [a, b] = ['tobi', 'damola'];
+
 
 console.log(firstName); // Ojo
 console.log(surname); // Oluwasetemi
@@ -31,12 +33,14 @@ console.log(user.name); // Ojo
 // looping with object.entries()
 let user2 = {
   name: "John",
-  age: 30
+  age: 30,
+  job: 'developer'
 };
+
 [['name', 'John'], ['age', 30]]
 // loop over keys-and-values and map
 for (let [key, value] of Object.entries(user2)) {
-  console.log(`${key}:${value}`); // name:John, then age:30
+  console.log(key + ':' +value); // name:John, then age:30
 }
 
 // ...rest
