@@ -306,15 +306,21 @@ console.log(sumFunc(2, 4))
 const handler = function() {
     console.log('I was logged after 5s')
 }
-let timeId = setTimeout(handler, 5000);
 
-clearTimeout(timeId);
+// let timeId = setTimeout(handler, 5000);
+
+// setTimeout(() => {
+//   clearTimeout(timeId);
+//   console.log('i cleared the timeout');
+// }, 7000)
+
+// console.log(timeId);
 
 function sayHi4(phrase, who) {
   console.log( phrase + ', ' + who );
 }
 
-setTimeout(sayHi4, 1000, "Hello", "John"); // Hello, John
+// setTimeout(sayHi4, 1000, "Hello", "John"); // Hello, John
 // setInterval
 start = new Date();
 // setInterval(() => {
@@ -323,10 +329,17 @@ start = new Date();
 
 // repeat with the interval of 2 seconds
 // UNcomment
-let timerId = setInterval(() => console.log('tick'), 2000);
+
+function tickHandler() {
+  console.log('tick');
+}
+
+// let timerId = setInterval(() => console.log('tick'), 2000);
+let timerId = setInterval(tickHandler, 2000);
 
 // after 5 seconds stop
-setTimeout(() => { clearInterval(timerId); console.log('stop'); }, 5000);
+setTimeout(() => { clearInterval(timerId); console.log('stop'); }, 10000);
+
 // Nested setTimeout
 /** instead of:
 let timerId = setInterval(() => console.log('tick'), 2000);

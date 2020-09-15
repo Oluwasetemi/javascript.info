@@ -84,7 +84,8 @@ let options2 = {
 
 // { sourceProperty: targetVariable }
 let {width: w, height: h, title2} = options2;
-
+console.log(width)
+console.log(height)
 // width -> w
 // height -> h
 // title -> title
@@ -93,6 +94,7 @@ console.log(w);      // 100
 console.log(h);      // 200
 console.log(title2)//;  // Menu
 
+// default values
 let options3 = {
   title3: "Menu"
 };
@@ -117,14 +119,16 @@ console.log(h2);      // 200
 
 // rest
 let options5 = {
-  title: "Menu",
+  title5: "Menu",
   height: 200,
   width: 100
 };
 
 // title = property named title
 // rest = object with the rest of properties
-let {title5, ...rest2} = options5;
+let { title5, ...rest2 } = options5;
+console.log(title5);
+console.log(rest2)
 
 // now title="Menu", rest={height: 200, width: 100}
 console.log(rest2.height);  // 200
@@ -137,6 +141,7 @@ let title6, width3, height3;
 ({title, width, height} = {title: "Menu", width: 200, height: 100});
 
 console.log(title); // Menu
+console.log(width); // Menu
 
 
 
@@ -186,6 +191,14 @@ function showMenu({title = "Untitled", width = 200, height = 100, items = []}) {
 
 showMenu(options8);
 
+function sum({ a = 10, b = 90 }) {
+  return a + b;
+}
+
+const obj = {a: 2, b: 5}
+
+console.log(sum({}))
+
 let options9 = {
   title: "My menu",
   items: ["Item1", "Item2"]
@@ -214,11 +227,11 @@ let options9 = {
 
 // showMenu2(); // this would give an error
 
-function showMenu10({ title = "Menu", width = 100, height = 200 } = {}) {
+function showMenu10({ title = "Menu", width = 100, height = 200 }) {
   console.log( `${title} ${width} ${height}` );
 }
 
-showMenu10(); // Menu 100 200
+showMenu10({}); // Menu 100 200
 
 options;
 

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src=""></script>
+  </head>
+
+  <body>
+    <h2>Hello World in DOM</h2>
+
+    <script>
+      console.log('working');
+
+      // consider the below function
+      function loadScript(src, call) {
+        // creates a <script> tag and append it to the page
+        // this causes the script with given src to start loading and run when complete
+        const script = document.createElement('script');
+        script.src = src;
+
+        // onload
+        script.onload = () => call(script);
+
+        document.head.append(script);
+      }
+
+      // load and execute the script at the given path
+      loadScript('./script.js', function () {
+        console.log('I happened inside the loadScript')
+        console.log(sum(2, 4));
+      });
+
+      loadScript('https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.js', script => {
+        alert(`Cool, the script ${script.src} is loaded`);
+        // alert(_); // function declared in the loaded script
+
+        const res = _.countBy([6.1, 4.2, 6.3], Math.floor);
+        // => { '4': 1, '6': 2 }
+
+        // The `_.property` iteratee shorthand.
+        const res2 = _.countBy(['one', 'two', 'three'], 'length');
+        // => { '3': 2, '5': 1 }
+
+        console.log(res);
+        console.log(res2);
+      });
+
+    </script>
+  </body>
+
+</html>
