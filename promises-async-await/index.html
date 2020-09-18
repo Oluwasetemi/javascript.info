@@ -15,40 +15,102 @@
       console.log('working');
 
       // consider the below function
-      function loadScript(src, call) {
-        // creates a <script> tag and append it to the page
-        // this causes the script with given src to start loading and run when complete
-        const script = document.createElement('script');
-        script.src = src;
+      // function loadScript(src, call) {
+      //   // creates a <script> tag and append it to the page
+      //   // this causes the script with given src to start loading and run when complete
+      //   const script = document.createElement('script');
+      //   script.src = src;
 
-        // onload
-        script.onload = () => call(script);
+      //   // onload
+      //   script.onload = () => call(null, script);
+      //   script.onerror = () => call(new Error(`Script load error for ${src}`));
 
-        document.head.append(script);
+      //   document.head.append(script);
+      // }
+
+      function loadScript(src) {
+        return new Promise(function (resolve, reject) {
+          let script = document.createElement('script');
+          script.src = src;
+
+          script.onload = () => resolve(script);
+          script.onerror = () => reject(new Error(`Script load error for ${src}`));
+
+          document.head.append(script);
+        });
       }
 
       // load and execute the script at the given path
-      loadScript('./script.js', function () {
+      /* loadScript('./script.js', function (err, script) {
+        console.log({ err })
+        console.log({ script })
         console.log('I happened inside the loadScript')
         console.log(sum(2, 4));
-      });
 
-      loadScript('https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.js', script => {
-        alert(`Cool, the script ${script.src} is loaded`);
-        // alert(_); // function declared in the loaded script
+        const arr = [6.1, 4.2, 6.3];
 
-        const res = _.countBy([6.1, 4.2, 6.3], Math.floor);
-        // => { '4': 1, '6': 2 }
+        loadScript('https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.js', (err, script) => {
+          if (err) {
+            console.error(err);
+          }
+          alert(`Cool, the script ${script.src} is loaded`);
+          // alert(_); // function declared in the loaded script
 
-        // The `_.property` iteratee shorthand.
-        const res2 = _.countBy(['one', 'two', 'three'], 'length');
-        // => { '3': 2, '5': 1 }
+          console.log('begin - lodah')
+          const res = _.countBy(arr, Math.floor);
+          // => { '4': 1, '6': 2 }
 
-        console.log(res);
-        console.log(res2);
-      });
+          // The `_.property` iteratee shorthand.
+          const res2 = _.countBy(['one', 'two', 'three'], 'length');
+          // => { '3': 2, '5': 1 }
+
+          console.log(res);
+          console.log(res2);
+          console.log('done')
+        });
+
+      }); */
+
+      loadScript('./script.js').then(
+        script => {
+
+          console.log({ script })
+          console.log('I happened inside the loadScript')
+          console.log(sum(2, 4));
+
+          const arr = [6.1, 4.2, 6.3];
+
+          // loadScript('https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.js', (err, script) => {
+          //   if (err) {
+          //     console.error(err);
+          //   }
+          //   alert(`Cool, the script ${script.src} is loaded`);
+          //   // alert(_); // function declared in the loaded script
+
+          //   console.log('begin - lodah')
+          //   const res = _.countBy(arr, Math.floor);
+          //   // => { '4': 1, '6': 2 }
+
+          //   // The `_.property` iteratee shorthand.
+          //   const res2 = _.countBy(['one', 'two', 'three'], 'length');
+          //   // => { '3': 2, '5': 1 }
+
+          //   console.log(res);
+          //   console.log(res2);
+          //   console.log('done')
+          // });
+        }
+      ).catch(err => {
+        console.log({ err })
+      })
+
+
 
     </script>
+
+
+    <!-- script2 -->
+    <!-- script3 -->
   </body>
 
 </html>

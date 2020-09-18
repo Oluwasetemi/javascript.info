@@ -1,9 +1,9 @@
   // .then below runs when the remote server responds
-fetch('/user.json')
+fetch('./user.json')
   .then(function(response) {
     // response.text() returns a new promise that resolves with the full response text
     // when it loads
-    return response.text();
+    return response.json();
   })
   .then(function(text) {
     // ...and here's the content of the remote file
@@ -11,12 +11,12 @@ fetch('/user.json')
   });
 
     // same as above, but response.json() parses the remote content as JSON
-fetch('/article/promise-chaining/user.json')
+fetch('./article/promise-chaining/user.json')
   .then(response => response.json())
-        .then(user => console.log(user.name)); // iliakan, got user name
+  .then(user => console.log(user.name)); // iliakan, got user name
 
     // Make a request for user.json
-fetch('/article/promise-chaining/user.json')
+/* fetch('/article/promise-chaining/user.json')
   // Load it as json
   .then(response => response.json())
   // Make a request to GitHub
@@ -134,11 +134,11 @@ new Promise(function() {
   throw new Error("Whoops!");
 }); // no catch to handle the error
 
-/* Promise.all([
+Promise.all([
   new Promise(resolve => setTimeout(() => resolve(1), 3000)), // 1
   new Promise(resolve => setTimeout(() => resolve(2), 2000)), // 2
   new Promise(resolve => setTimeout(() => resolve(3), 1000))  // 3
-]).then(console.log); // 1,2,3 when promises are ready: each promise contributes an array member */
+]).then(console.log); // 1,2,3 when promises are ready: each promise contributes an array member
 
 let urls = [
   'https://api.github.com/users/iliakan',
@@ -319,6 +319,7 @@ function promisify2(f, manyArgs = false) {
 let promise90 = Promise.reject(new Error("Promise Failed!"));
 setTimeout(() => promise90.catch(err => console.log('caught')), 1000);
 
+ */
 function sum(a, b) {
   return a + b;
 }

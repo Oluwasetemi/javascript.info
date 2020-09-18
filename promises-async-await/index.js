@@ -89,7 +89,7 @@ loadScript3('/my/script.js', function(error, script) {
   }
 });
 
-// pyramid of doom
+// pyramid of doom || callback hell
 loadScript('1.js', function(error, script) {
   if (error) {
     handleError(error);
@@ -125,6 +125,7 @@ const promise = new Promise(function(resolve, reject) {
 
   // after 1 second signal that the job is done with the result "done"
   setTimeout(() => resolve('done'), 1000);
+  // setTimeout(() => reject('done'), 1000);
 });
 
 let promise3 = new Promise(function(resolve, reject) {
@@ -152,6 +153,17 @@ promise5.then(
   result => alert(result), // doesn't run
   error => alert(error) // shows "Error: Whoops!" after 1 second
 );
+
+let promise9999 = new Promise(function(resolve, reject) {
+  setTimeout(() => reject(new Error("Whoops!")), 1000);
+});
+
+// reject runs the second function in .then
+promise9999
+  // doesn't run
+  .then(result => alert(result))
+  // shows "Error: Whoops!" after 1 second
+  .catch(error => alert(error))
 
 // .catch(f) is the same as promise.then(null, f)
 promise5.catch(alert); // shows "Error: Whoops!" after 1 second
