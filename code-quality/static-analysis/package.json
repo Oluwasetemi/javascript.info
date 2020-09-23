@@ -1,0 +1,39 @@
+{
+  "name": "static-analysis",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "prettier": "prettier src ",
+    "format": "npm run lint:fix && prettier src --write",
+    "validate": "npm run lint && prettier src --list-different"
+  },
+  "keywords": [],
+  "author": "Oluwasetemi Ojo <setemiojo@gmail.com> (https://oluwasetemi.dev/)",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^7.9.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "prettier": "^2.1.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run format"
+    }
+  },
+  "lint-staged": {
+      "*.js": [
+        "eslint src --fix",
+        "git add"
+      ]
+  },
+  "dependencies": {
+    "husky": "^4.3.0",
+    "lint-staged": "^10.4.0"
+  }
+}
