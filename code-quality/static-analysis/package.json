@@ -28,8 +28,7 @@
   },
   "lint-staged": {
       "*.js": [
-        "eslint src --fix",
-        "git add"
+        "npm run format"
       ]
   },
   "dependencies": {
