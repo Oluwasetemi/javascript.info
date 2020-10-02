@@ -1,0 +1,17 @@
+{
+  "name": "mocking",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Oluwasetemi Ojo <setemiojo@gmail.com> (https://oluwasetemi.dev/)",
+  "license": "MIT",
+  "devDependencies": {
+    "create-jest-runner": "^0.7.0",
+    "glob": "^7.1.6",
+    "jest": "^26.4.2"
+  }
+}
