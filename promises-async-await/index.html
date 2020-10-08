@@ -6,10 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src=""></script>
+    <link rel="stylesheet" href="style.css">
   </head>
 
   <body>
     <h2>Hello World in DOM</h2>
+
+    <p class="length">length of my json file document <span></span></p>
+
+    <h3>GITHUB URL</h3>
+    <p class="github"></p>
+    <div class="card-container">
+    </div>
 
     <script>
       console.log('working');
@@ -74,9 +82,9 @@
       loadScript('./script.js').then(
         script => {
 
-          console.log({ script })
+          // console.log({ script })
           console.log('I happened inside the loadScript')
-          console.log(sum(2, 4));
+          // console.log(sum(2, 4));
 
           const arr = [6.1, 4.2, 6.3];
 

@@ -1,19 +1,53 @@
   // .then below runs when the remote server responds
+  const lengthP = document.querySelector('p.length span');
+  const github = document.querySelector('p.github');
+  const cardContainer = document.querySelector('div.card-container');
+  console.log(cardContainer)
 fetch('./user.json')
   .then(function(response) {
     // response.text() returns a new promise that resolves with the full response text
     // when it loads
     return response.json();
   })
-  .then(function(text) {
+  .then(async function(text) {
     // ...and here's the content of the remote file
     console.log(text); // {"name": "iliakan", isAdmin: true}
-  });
+    lengthP.textContent = text.length;
+
+    // loop thru the json document and make api call using the githubuserName
+    let result = [];
+    for (let eachPerson of text) {
+      console.log(eachPerson)
+      const eachData = await fetch(`https://api.github.com/users/${eachPerson.githubUsername}`).then(res => res.json());
+      console.log(eachData);
+      const eachDataHTML = `
+      <div class="card ${eachData.name}" data-url="${eachData.url}">
+        <div className="body">
+          <a href="https://github.com/${eachData.name}">
+            <p>${eachData.login}</p>
+          </a>
+          <p>${eachData.location}</p>
+          <p>${eachData.bio}</p>
+        </div>
+        <div className="image">
+          <img src="${eachData.avatar_url}" alt="${eachData.name}" />
+        </div>
+      </div>
+      `
+      console.log(eachDataHTML)
+      result.push(eachDataHTML);
+    }
+    // github.textContent = JSON.stringify(result)
+    cardContainer.innerHTML = result.join('')
+
+
+  })
 
     // same as above, but response.json() parses the remote content as JSON
-fetch('./article/promise-chaining/user.json')
-  .then(response => response.json())
-  .then(user => console.log(user.name)); // iliakan, got user name
+// fetch('./article/promise-chaining/user.json')
+//   .then(response => response.json())
+//   .then(user => console.log(user.name));
+  // iliakan, got user name
 
     // Make a request for user.json
 /* fetch('/article/promise-chaining/user.json')
