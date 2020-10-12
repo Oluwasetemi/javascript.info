@@ -2,7 +2,7 @@ const {sum, subtract} = require('../math')
 
 let result, expected
 
-result = sum(3, 7)
+result = sum(3, 'a')
 expected = 10
 if (result !== expected) {
   throw new Error(`${result} is not equal to ${expected}`)

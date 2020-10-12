@@ -42,5 +42,5 @@ test('subtract fxn adds two numbers asynchronously', async () => {
   const expected = 4
   // expect(result).toBe(expected)
   // use assert in a mode environment
-  assert.strictEqual(result, expected)
+  assert.strictEqual(result, expected);
 });

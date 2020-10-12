@@ -21,10 +21,11 @@ function test(title, callback) {
 }
 
 function sumTest() {
-  const result = sum(3, 7)
+  const result = sum(3, 'a')
   const expected = 10
   expect(result).toBe(expected)
 }
+
 test('sum fxn adds two numbers', sumTest);
 
 function subtractTest() {
