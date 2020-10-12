@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="margin:0">
+    <canvas id="canvasElem" width="100" height="80" style="border:1px solid"></canvas>
+
+    <input type="button" value="Submit" onclick="submit()">
+
+    <script>
+      canvasElem.onmousemove = function(e) {
+        let ctx = canvasElem.getContext('2d');
+        ctx.lineTo(e.clientX, e.clientY);
+        ctx.stroke();
+      };
+
+      async function submit() {
+        let blob = await new Promise(resolve => canvasElem.toBlob(resolve, 'image/png'));
+        let response = await fetch('/article/fetch/post/image', {
+          method: 'POST',
+          body: blob
+        });
+
+        // the server responds with confirmation and the image size
+        let result = await response.json();
+        alert(result.message);
+      }
+
+    </script>
+  </body>
+
+</html>

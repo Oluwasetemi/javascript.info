@@ -2,7 +2,7 @@
   const lengthP = document.querySelector('p.length span');
   const github = document.querySelector('p.github');
   const cardContainer = document.querySelector('div.card-container');
-  console.log(cardContainer)
+  // console.log(cardContainer)
 fetch('./user.json')
   .then(function(response) {
     // response.text() returns a new promise that resolves with the full response text
@@ -11,16 +11,25 @@ fetch('./user.json')
   })
   .then(async function(text) {
     // ...and here's the content of the remote file
-    console.log(text); // {"name": "iliakan", isAdmin: true}
+    // console.log(text); // {"name": "iliakan", isAdmin: true}
     lengthP.textContent = text.length;
 
     // loop thru the json document and make api call using the githubuserName
     let result = [];
     for (let eachPerson of text) {
-      console.log(eachPerson)
-      const eachData = await fetch(`https://api.github.com/users/${eachPerson.githubUsername}`).then(res => res.json());
-      console.log(eachData);
-      const eachDataHTML = `
+      // console.log(eachPerson)
+      const response = await fetch(`https://api.github.com/users/${eachPerson.githubUsername}`)
+
+      // check
+      if (!response.status) {
+        return null;
+      }
+
+      const eachData = await response.json();
+      //
+
+      // console.log(eachData);
+      const eachDataHTML =  eachData.message === 'Not Found' ? `<div class="card">'not data'</div>` : `
       <div class="card ${eachData.name}" data-url="${eachData.url}">
         <div className="body">
           <a href="https://github.com/${eachData.name}">
