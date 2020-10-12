@@ -13,26 +13,46 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.js"></script>
     <script>
       // chai has a lot of stuff, let's make assert global
+      console.log(chai)
       let assert = chai.assert;
+      let expect = chai.expect;
     </script>
   </head>
 
   <body>
 
     <script>
-      function pow(x, n) {
-        /* function code is to be written, empty now */
-        if (n < 0) return NaN;
-        if (Math.round(n) != n) return NaN;
-
-        let result = 1;
-
-        for (let i = 0; i < n; i++) {
-          result *= x;
+      function sum(a, b) {
+        console.log(arguments.length)
+        if (arguments.length !== 2) {
+          throw new Error('argument length must be 2')
         }
 
+        if (!Number(a) || !Number(b)) {
+          throw new Error(' argument must be numbers alone')
+        }
+
+        return a + b;
+      }
+
+      function pow(x, n) {
+        /* function code is to be written, empty now */
+        // if (Math.round(n) != n) return NaN;
+
+        let result = 1;
+        let y = Math.abs(n);
+        if (n === 0) return result;
+
+        for (let i = 0; i < y; i++) {
+          result *= x;
+        }
+        if (n < 0) return 1/result;
+
+        // return result;
         return result;
       }
+
+      pow(2, 3) // 2* 2*2
     </script>
 
     <!-- the script with tests (describe, it...) -->
