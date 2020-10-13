@@ -16,4 +16,4 @@ let obj = {
 	age: 99,
 };
 
-// console.log(obj);
+console.log(obj);
