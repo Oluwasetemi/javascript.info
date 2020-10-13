@@ -1,41 +1,45 @@
 
 describe("pow", function () {
 
- /*  it("raises to n-th power", function () {
+  xit("raises to n-th power", function () {
     assert.equal(pow(2, 3), 8);
     assert.equal(pow(3, 4), 81);
-  }); */
+  });
 
-  /* it("2 raised to power 3 is 8", function () {
+  xit("2 raised to power 3 is 8", function () {
     assert.equal(pow(2, 3), 8);
   });
 
-  it("3 raised to power 4 is 81", function () {
+  xit("3 raised to power 4 is 81", function () {
     assert.equal(pow(3, 4), 81);
-  }); */
-
-  it("for negative n the result is NaN", function () {
-    assert.isNaN(pow(2, -1));
   });
 
-  it("for non-integer n the result is NaN", function () {
-    assert.isNaN(pow(2, 1.5));
+  xit("for negative 2 the result is .5", function () {
+    assert.equal(pow(2, -1), .5);
+    assert.isNumber(pow(2, -1), .5);
   });
 
-  // describe("raises x to power 3", function () {
+  describe("raises x to power y", function () {
 
 
-  //   function makeTest(x) {
-  //     let expected = x * x * x;
-  //     it(`${x} in the power 3 is ${expected}`, function () {
-  //       assert.equal(pow(x, 3), expected);
-  //     });
-  //   }
+    function makeTest(x, y) {
+      let expected = 1;
+      for (let i = 1; i <= y; i++) {
+        expected *= x;
+      }
+      xit(`${x} in the power ${y} is ${expected}`, function () {
+        assert.equal(pow(x, y), expected);
+      });
+    }
 
-  //   for (let x = 1; x <= 5; x++) {
-  //     makeTest(x);
-  //   }
-  // })
+    for (let x = 1; x <= 5; x++) {
+      for (let y = 1; y <= 12; y++) {
+        // console.log({x, y})
+        makeTest(x, y);
+      }
+    }
+    // makeTest(3, 5);
+  })
 
 
 
@@ -46,7 +50,7 @@ describe("pow", function () {
     beforeEach(() => console.log("Before a test – enter a test"));
     afterEach(() => console.log("After a test – exit a test"));
 
-    it('test 1', () => console.log(1));
+    xit('test 1', () => console.log(1));
     it('test 2', () => console.log(2));
   });
 
