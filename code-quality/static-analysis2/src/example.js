@@ -19,3 +19,4 @@ let obj = {
 console.log(obj);
 
 const ade = 'ade';
+console.log(ade);

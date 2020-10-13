@@ -16,13 +16,13 @@
 		"hooks": {
 			"pre-commit": "npm run format"
 		}
-  },
-  "lint-staged": {
-    "*.js": [
-      "npm run format",
-      "git add"
-    ]
-  },
+	},
+	"lint-staged": {
+		"*.js": [
+			"npm run format",
+			"git add"
+		]
+	},
 	"keywords": [],
 	"author": "Oluwasetemi Ojo <setemiojo@gmail.com> (https://oluwasetemi.dev/)",
 	"license": "MIT",
