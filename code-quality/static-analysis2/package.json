@@ -1,0 +1,32 @@
+{
+	"name": "static-analysis2",
+	"version": "0.0.1",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"lint": "eslint --ignore-path .gitignore ./src -ext .js,.ts",
+		"lint:fix": "eslint --ignore-path .gitignore ./src --fix",
+		"prettier": "prettier ./src --ignore-path .gitignore \"**/*.+(js|md|jsx|json)\"",
+		"prettier:write": "npm run prettier -- --write",
+		"prettier:list-different": "prettier ./src --write --ignore-path .gitignore \"**/*.+(js|md|jsx|json)\"",
+		"format": "npm run lint:fix && npm run prettier:write",
+		"validate": "npm run lint && npm run prettier:list-different"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "npm run format"
+		}
+	},
+	"keywords": [],
+	"author": "Oluwasetemi Ojo <setemiojo@gmail.com> (https://oluwasetemi.dev/)",
+	"license": "MIT",
+	"dependencies": {
+		"eslint-prettier-config": "^1.0.1",
+		"husky": "^4.3.0",
+		"lint-staged": "^10.4.0",
+		"prettier": "^2.1.2"
+	},
+	"devDependencies": {
+		"eslint": "^7.11.0"
+	}
+}
