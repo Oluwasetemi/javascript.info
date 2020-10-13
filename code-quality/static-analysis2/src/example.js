@@ -17,3 +17,5 @@ let obj = {
 };
 
 console.log(obj);
+
+const ade = 'ade';
