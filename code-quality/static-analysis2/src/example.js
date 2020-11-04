@@ -11,12 +11,11 @@ for (let i = 0; i < 10; i++) {
 	console.log('helllo');
 }
 
-let obj = {
-	name: 'ade',
-	age: 99,
-};
+// let obj = {
+// 	name: 'ade',
+// 	age: 99,
+// };
 
-console.log(obj);
+// console.log(obj);
 
-const ade = 'ade';
-console.log(ade);
+// const ade = 'ade';
