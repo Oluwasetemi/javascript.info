@@ -2,17 +2,33 @@
 <body>
     <script type="module">
         // named export
-        import { sayHi } from './say.js';
-        import * as say from './say.js';
-        console.log(say);
+        // import { sayHi } from './say.js';
+        // import all of the exports in say.js - export all
+        // import * as say from './say.js';
+        // console.log(say);
+
+        // console.log(say.MODULES_BECAME_STANDARD_YEAR)
+        // console.log(say.months)
+
+        // const me = new say.User('temi');
+        // console.log(me)
+
+        // say.sayBye(me.name);
         // 📁 main.js
+        // renamed import
         import { sayHi as hi, sayBye as bye } from './say.js';
+        import {default as example} from './user.js'
+        import mul, * as Everything from './math.js'
 
-        hi('John'); // Hello, John!
-        bye('John'); // Bye, John!
-        alert(import.meta.url); // script url (url of the html page for an inline script)
+        console.log(mul)
 
-        document.body.innerHTML = sayHi('John');
+        //hi('John'); // Hello, John!
+        //bye('John'); // Bye, John!
+        //lert(import.meta.url); // script url (url of the html page for an inline script)
+
+
+
+        document.body.innerHTML = hi('John');
     </script>
     <!-- module scripts are always deferred -->
     <script type="module" src="hello.js"></script>

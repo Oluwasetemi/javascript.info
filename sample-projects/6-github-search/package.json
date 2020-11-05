@@ -1,0 +1,23 @@
+{
+  "name": "6-github-search",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "private": "true",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel index.html"
+  },
+  "keywords": [],
+  "author": "Oluwasetemi Ojo <setemiojo@gmail.com> (https://oluwasetemi.dev/)",
+  "license": "MIT",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0"
+  },
+  "browserslist": [
+    "last 1 chrome version"
+  ]
+}

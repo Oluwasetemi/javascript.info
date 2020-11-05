@@ -1,4 +1,4 @@
-// export const user = 'John';
+export const user = 'John';
 // 📁 user.js
 // default export
 export default class User {

@@ -1,0 +1,20 @@
+.card {
+    border: 2px solid #ffc600;
+    padding: 10px;
+    /* border-radius: 5px;; */
+    display: grid;
+    grid-template-columns: 2fr auto;
+}
+
+.card img {
+    height: 150px;
+}
+
+/* .card {
+    background-color: aqua;
+} */
+
+.card-container:first {
+    border-bottom: 2px solid black;
+    color: green;;
+}
