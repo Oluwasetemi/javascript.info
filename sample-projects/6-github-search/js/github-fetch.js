@@ -1,9 +1,5 @@
 async function githubAPIUsers(username) {
-  const response = await fetch(`https://api.github.com/users/${username}`, {
-    headers: {
-      Authorization: "token token",
-    },
-  });
+  const response = await fetch(`https://api.github.com/users/${username}`);
 
   // check
   if (!response.status) {
