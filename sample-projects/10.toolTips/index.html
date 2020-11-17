@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToolTips</title>
+    <style>
+      body {
+        height: 2000px;
+      }
+
+      .tooltip {
+        position: fixed;
+        padding: 10px 20px;
+        border: 1px solid #b3c9ce;
+        border-radius: 4px;
+        text-align: center;
+        font: italic 14px/1.3 sans-serif;
+        color: #333;
+        background: #fff;
+        box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+      }
+    </style>
+  </head>
+  <body>
+    <h2>ToolTips</h2>
+
+    <p>LaLaLa LaLaLa LaLaLa LaLaLa LaLaLa LaLaLa LaLaLa LaLaLa LaLaLa</p>
+    <p>LaLaLa LaLaLa LaLaLa LaLaLa LaLaLa LaLaLa LaLaLa LaLaLa LaLaLa</p>
+
+    <button data-tooltip="the tooltip is longer than the element">
+      Short button
+    </button>
+    <button data-tooltip="HTML<br>tooltip">One more button</button>
+
+    <p>
+      Scroll the page to make buttons appear on the top, check if the tooltips
+      show up correctly.
+    </p>
+
+    <script>
+      let tooltipElem;
+      document.onmouseover = function (event) {
+        const target = event.target;
+
+        // delegate to element with data-tooltip
+        let tooltipHtml = target.dataset.tooltip;
+        if (!tooltipHtml) {
+          return;
+        }
+
+        // create the tooltip element
+        tooltipElem = document.createElement("div");
+        tooltipElem.className = "tooltip";
+        tooltipElem.innerHTML = tooltipHtml;
+
+        // append to body
+        document.body.append(tooltipElem);
+
+        // position the tooltip
+        let targetCoords = target.getBoundingClientRect();
+        let left =
+          targetCoords.left +
+          (target.offsetWidth - tooltipElem.offsetWidth) / 2;
+        if (left < 0) left = 0;
+        let top = targetCoords.top - tooltipElem.offsetHeight - 5;
+        if (top < 0) {
+          top = targetCoords.top + target.offsetHeight + 5;
+        }
+        tooltipElem.style.left = `${left}px`;
+        tooltipElem.style.top = `${top}px`;
+      };
+
+      document.onmouseout = function (e) {
+        if (tooltipElem) {
+          tooltipElem.remove();
+          tooltipElem = null;
+        }
+      };
+    </script>
+  </body>
+</html>
