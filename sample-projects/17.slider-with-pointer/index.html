@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slider with Pointer Events</title>
+    <style>
+      .slider {
+        border-radius: 5px;
+        background: #e0e0e0;
+        background: linear-gradient(left top, #e0e0e0, #eeeeee);
+        width: 310px;
+        height: 15px;
+        margin: 5px;
+      }
+
+      .thumb {
+        width: 10px;
+        height: 25px;
+        border-radius: 3px;
+        position: relative;
+        left: 10px;
+        top: -5px;
+        background: blue;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="slider" class="slider">
+      <div class="thumb"></div>
+    </div>
+
+    <script>
+      let thumb = slider.querySelector(".thumb");
+      let shiftX;
+
+      thumb.onpointerdown = function (event) {
+        event.preventDefault(); // prevent selection start (browser action)
+
+        shiftX = event.clientX - thumb.getBoundingClientRect().left;
+
+        thumb.setPointerCapture(event.pointerId);
+      };
+
+      thumb.onpointermove = function (event) {
+        if(!event.target.hasPointerCapture(event.pointerId)) return;
+
+        let newLeft =
+          event.clientX - shiftX - slider.getBoundingClientRect().left;
+
+        // if the pointer is out of slider => adjust left to be within the boundaries
+        if (newLeft < 0) {
+          newLeft = 0;
+        }
+        let rightEdge = slider.offsetWidth - thumb.offsetWidth;
+        if (newLeft > rightEdge) {
+          newLeft = rightEdge;
+        }
+
+        thumb.style.left = newLeft + "px";
+      };
+
+      thumb.ondragstart = () => false;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slider</title>
+    <style>
+      .slider {
+        border-radius: 5px;
+        background: #e0e0e0;
+        background: linear-gradient(left top, #e0e0e0, #eeeeee);
+        width: 310px;
+        height: 15px;
+        margin: 5px;
+      }
+
+      .thumb {
+        width: 10px;
+        height: 25px;
+        border-radius: 3px;
+        position: relative;
+        left: 10px;
+        top: -5px;
+        background: blue;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="slider" class="slider">
+      <div class="thumb"></div>
+    </div>
+
+    <script>
+      let thumb = slider.querySelector(".thumb");
+
+      thumb.onmousedown = function (event) {
+        // (1) prepare to moving
+        event.preventDefault(); // prevent selection start (browser action)
+
+        let shiftX = event.clientX - thumb.getBoundingClientRect().left;
+        // shiftY not needed, the thumb moves only horizontally
+
+        // (2) move the slider on mousemove
+        document.addEventListener("mousemove", onMouseMove);
+        // implement on move on click
+        document.addEventListener("click", onMouseMove);
+        document.addEventListener("mouseup", onMouseUp);
+
+        function onMouseMove(event) {
+          let newLeft =
+            event.clientX - shiftX - slider.getBoundingClientRect().left;
+
+          // the pointer is out of slider => lock the thumb within the boundaries
+          if (newLeft < 0) {
+            newLeft = 0;
+          }
+          let rightEdge = slider.offsetWidth - thumb.offsetWidth;
+          if (newLeft > rightEdge) {
+            newLeft = rightEdge;
+          }
+
+          thumb.style.left = newLeft + "px";
+        }
+
+        // (3) drop the ball, remove unneeded handlers
+        function onMouseUp() {
+          document.removeEventListener("mouseup", onMouseUp);
+          document.removeEventListener("mousemove", onMouseMove);
+        }
+      };
+
+      thumb.ondragstart = function () {
+        return false;
+      };
+    </script>
+  </body>
+</html>

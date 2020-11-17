@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pointer Events</title>
+</head>
+<body>
+  <style>
+    #ball { touch-action: none }
+  </style>
+
+
+  <p>Drag the ball.</p>
+
+  <img src="https://js.cx/clipart/ball.svg" style="cursor:pointer" width="40" height="40" id="ball">
+
+  <script>
+
+    ball.onpointerdown = log;
+    ball.onpointerup = log;
+    ball.onpointermove = log;
+    ball.onpointercancel = log;
+
+    let lastEventType;
+    let n = 1;
+    function log(event) {
+      if (lastEventType == event.type) {
+        n++;
+        text.value = text.value.replace(/.*\n$/, `${event.type} * ${n}\n`);
+        return;
+      }
+      lastEventType = event.type;
+      n = 1;
+      text.value += event.type + '\n';
+      text.scrollTop = 1e9;
+    }
+
+      ball.ondragstart = () => false
+  </script>
+
+  <textarea id="text" style="display:block;width:300px;height:100px"></textarea>
+</body>
+</html>
