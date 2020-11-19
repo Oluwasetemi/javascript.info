@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Playing with canvas</title>
+    <link rel="stylesheet" href="./css/base.css" />
+    <style>
+      body {
+        min-height: 100vh;
+        display: grid;
+        align-items: center;
+        justify-items: center;
+        background: white;
+        background: url(https://s3.amazonaws.com/media.locally.net/original/HABA_ALT_2017-08-02-13-22-45.jpg);
+        background-size: cover;
+      }
+
+      canvas#etch-a-sketch {
+        border: 30px solid #e80000;
+        border-radius: 10px;
+        /* Set the width and height to half the actual size so it doesn't look pixelated */
+        width: 800px;
+        height: 500px;
+        background: white;
+      }
+
+      canvas.shake {
+        animation: shake 0.5s linear 1;
+      }
+
+      @keyframes shake {
+        10%,
+        90% {
+          transform: translate3d(-1px, 0, 0);
+        }
+
+        20%,
+        80% {
+          transform: translate3d(2px, 0, 0);
+        }
+
+        30%,
+        50%,
+        70% {
+          transform: translate3d(-4px, 0, 0);
+        }
+
+        40%,
+        60% {
+          transform: translate3d(4px, 0, 0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="canvasWrap">
+      <canvas width="1600" height="1000" id="etch-a-sketch"> </canvas>
+
+      <canvas width="16" height="10" id="food"> </canvas>
+
+      <div class="buttons">
+        <button class="shake">Shake!</button>
+      </div>
+    </div>
+
+    <script>
+      const canvas = window && window["etch-a-sketch"];
+      const ctx = canvas.getContext("2d");
+
+      const shake = document.querySelector("button.shake");
+      const MOVE_AMOUNT = 10;
+
+      const { width, height } = canvas;
+
+      let x = Math.floor(Math.random() * width);
+      let y = Math.floor(Math.random() * height);
+
+      ctx.lineJoin = "round";
+      ctx.lineCap = "round";
+      ctx.lineWidth = 10;
+
+      let hue = 0;
+      ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+
+      // begin drawing
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(x, y);
+      ctx.stroke();
+
+      // randomPaintAPoint()
+
+      // create a function to draw
+      function draw({ key }) {
+        // increment the hue
+        hue += 10;
+        ctx.strokeStyle = `hsl(${Math.random() * 360}, 100%, 50%)`;
+
+        // start path
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        // move our x and y value depending on the what the user did
+        switch (key) {
+          case "ArrowUp":
+            y -= MOVE_AMOUNT;
+            break;
+          case "ArrowRight":
+            x += MOVE_AMOUNT;
+            break;
+          case "ArrowDown":
+            y += MOVE_AMOUNT;
+            break;
+          case "ArrowLeft":
+            x -= MOVE_AMOUNT;
+            break;
+          default:
+            break;
+        }
+        ctx.lineTo(x, y);
+        ctx.stroke();
+      }
+      // create a function to draw
+      function draw2({ x, y }) {
+        // increment the hue
+        hue += 10;
+        ctx.strokeStyle = `hsl(${Math.random() * 360}, 100%, 50%)`;
+
+        // start path
+        ctx.beginPath();
+        // move our x and y value depending on the what the user did
+
+        ctx.lineTo(x, y);
+        ctx.stroke();
+      }
+
+      // write a handler for the keys
+      function handleKey(event) {
+        console.log(event);
+        if (event && event.key && event.key.includes("Arrow")) {
+          event.preventDefault();
+          draw({ key: event.key });
+        }
+
+        if (event.type == "mousemove") {
+          console.log("here");
+          let shiftX = (event.clientX * 2) - (canvas.getBoundingClientRect().left - canvas.clientLeft) * 2;
+          let shiftY = (event.clientY * 2) - (canvas.getBoundingClientRect().top - canvas.clientTop) * 2;
+          draw2({ x: shiftX, y: shiftY });
+        }
+      }
+
+      // clear shake function
+      function clearCanvas() {
+        canvas.classList.add("shake");
+        ctx.clearRect(0, 0, width, height);
+        canvas.addEventListener(
+          "animationend",
+          function () {
+            canvas.classList.remove("shake");
+          },
+          { once: true }
+        );
+      }
+
+      // randomly paint a point
+      function randomPaintAPoint() {
+        let hue = 70;
+        ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+
+        // begin drawing
+        ctx.beginPath();
+        console.log({ x, y });
+        ctx.moveTo(400, 500);
+        ctx.lineTo(400, 500);
+        ctx.stroke();
+      }
+
+      // listen for arrow keys
+      window.addEventListener("keydown", handleKey);
+      window.addEventListener("mousemove", handleKey);
+      shake.addEventListener("click", clearCanvas);
+    </script>
+  </body>
+</html>

@@ -9,9 +9,9 @@ const path = require("path");
 // Routing
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get("/", (req, res) => {
-  res.sendFile(indexHtmlPath);
-});
+// app.get("/", (req, res) => {
+//   res.sendFile(indexHtmlPath);
+// });
 
 let numberOfUsers = 0;
 

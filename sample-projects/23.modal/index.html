@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modals</title>
+  </head>
+  <body>
+    <div class="cards">
+      <div class="card" data-description="Learn how to handle click outside modals is cool">
+        <img src="https://picsum.photos/200?random=1" alt="click out side modals" />
+        <h2>Clicks outside modals</h2>
+        <button>Learn more →</button>
+      </div>
+      <div class="card" data-description="Javascript is cool">
+        <img src="https://picsum.photos/200?random=2" alt="Javascript" />
+        <h2>Learning Javascript</h2>
+        <button>Learn more →</button>
+      </div>
+      <div class="card" data-description="I am surrounded by very good people">
+        <img src="https://picsum.photos/200?random=3" alt="People" />
+        <h2>Modals</h2>
+        <button>Learn more →</button>
+      </div>
+      <div class="card" data-description="Snicker is a chocolate!">
+        <img src="https://picsum.photos/200?random=4" alt="chocolate" />
+        <h2>Snicker the chocolate</h2>
+        <button>Learn more →</button>
+      </div>
+    </div>
+
+    <div class="modal-outer">
+      <div class="modal-inner">
+        <p>TEsting 123</p>
+      </div>
+    </div>
+
+    <style>
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        padding: 2rem;
+      }
+
+      .card {
+        background: white;
+        padding: 1rem;
+        border-radius: 2px;
+      }
+
+      .card img {
+        width: 100%;
+        height: 200px;
+      }
+
+      .card h2 {
+        color: black;
+      }
+
+      .modal-outer {
+        display: grid;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        position: fixed;
+        background: hsl(50, 100%, 50%, 0.7);
+        justify-content: center;
+        align-items: center;
+        /* handle the opacity of our modal to hide the modal */
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s;
+      }
+
+      .modal-outer img {
+        width: 100%;
+      }
+
+      .modal-outer.open {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .modal-inner {
+        max-width: 600px;
+        padding: 2rem;
+        border-radius: 5px;
+        min-width: 400px;
+        min-height: 200px;
+        background: white;
+        transform: translateY(-200%);
+        transition: transform 2s;
+      }
+
+      .modal-outer.open .modal-inner {
+        transform: translateY(0);
+      }
+    </style>
+    <script src="./click-outside.js"></script>
+  </body>
+</html>
