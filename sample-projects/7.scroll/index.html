@@ -1,70 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Scroll Event</title>
-  </head>
-  <body>
-    <style>
-      .placeholder {
-        padding: 3em;
-      }
-      .progressContainer {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 8px;
-        background: gray;
-      }
-      .progress {
-        height: 8px;
-        background: red;
-        width: 0;
-        transition: width 0.5s;
-      }
-    </style>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Scroll Event</title>
+	</head>
+	<body>
+		<style>
+			.placeholder {
+				padding: 3em;
+			}
+			.progressContainer {
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 8px;
+				background: gray;
+			}
+			.progress {
+				height: 8px;
+				background: red;
+				width: 0;
+				transition: width 0.5s;
+			}
+		</style>
 
-    <div class="placeholder">some padding...</div>
-    <div class="placeholder">some padding...</div>
-    <div class="placeholder">some padding...</div>
-    <div class="placeholder">some padding...</div>
-    <div class="placeholder">some padding...</div>
-    <div class="placeholder">some padding...</div>
-    <div class="placeholder">some padding...</div>
-    <div class="placeholder">some padding...</div>
-    <div class="placeholder">some padding...</div>
-    <div class="placeholder">some padding...</div>
-    <div class="placeholder">some padding...</div>
-    <div class="placeholder">some padding...</div>
-    <div class="placeholder">some padding...</div>
-    <div class="placeholder">some padding...</div>
-    <div class="placeholder">some padding...</div>
-    <div class="placeholder">some padding...</div>
-    <div class="placeholder">some padding...</div>
-    <div class="placeholder">some padding...</div>
-    <div class="placeholder">some padding...</div>
-    <div class="placeholder">some padding...</div>
-    <div class="placeholder">some padding...</div>
-    <div class="placeholder">some padding...</div>
+		<div class="placeholder">some padding...</div>
+		<div class="placeholder">some padding...</div>
+		<div class="placeholder">some padding...</div>
+		<div class="placeholder">some padding...</div>
+		<div class="placeholder">some padding...</div>
+		<div class="placeholder">some padding...</div>
+		<div class="placeholder">some padding...</div>
+		<div class="placeholder">some padding...</div>
+		<div class="placeholder">some padding...</div>
+		<div class="placeholder">some padding...</div>
+		<div class="placeholder">some padding...</div>
+		<div class="placeholder">some padding...</div>
+		<div class="placeholder">some padding...</div>
+		<div class="placeholder">some padding...</div>
+		<div class="placeholder">some padding...</div>
+		<div class="placeholder">some padding...</div>
+		<div class="placeholder">some padding...</div>
+		<div class="placeholder">some padding...</div>
+		<div class="placeholder">some padding...</div>
+		<div class="placeholder">some padding...</div>
+		<div class="placeholder">some padding...</div>
+		<div class="placeholder">some padding...</div>
 
-    <div class="progressContainer">
-      <div id="progress" class="progress"></div>
-    </div>
+		<div class="progressContainer">
+			<div id="progress" class="progress"></div>
+		</div>
 
-    <script>
-      function updateProgress(top, height) {
-        let percent = Math.ceil((top / height) * 100) + "%";
-        document.getElementById("progress").style.width = percent;
-      }
+		<script>
+			function updateProgress(top, height) {
+				let percent = Math.ceil((top / height) * 100) + '%';
+				document.getElementById('progress').style.width = percent;
+			}
 
-      window.addEventListener("scroll", function () {
-        let top = window.scrollY;
-        let height =
-          document.body.getBoundingClientRect().height - window.innerHeight;
-        updateProgress(top, height);
-      });
-    </script>
-  </body>
+			window.addEventListener('scroll', function () {
+				let top = window.scrollY;
+				let height =
+					document.body.getBoundingClientRect().height -
+					window.innerHeight;
+				updateProgress(top, height);
+			});
+		</script>
+	</body>
 </html>
