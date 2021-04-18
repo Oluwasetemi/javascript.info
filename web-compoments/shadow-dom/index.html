@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Shadow DOM</title>
+	</head>
+	<body>
+		<input type="range" name="shadow-dom" id="" />
+		<div id="elem"></div>
+
+		<script>
+			customElements.define(
+				'show-hello',
+				class extends HTMLElement {
+					connectedCallback() {
+						const shadow = this.attachShadow({ mode: 'open' });
+						shadow.innerHTML = `<p>
+      Hello, ${this.getAttribute('name')}
+    </p>`;
+					}
+				},
+			);
+			elem.attachShadow({ mode: 'open' });
+
+			elem.shadowRoot.innerHTML = `
+        <style>
+          p {
+            color: red;
+            font-weight: bold;
+          }
+        </style>
+        <p>Hello, Setemi from shadow dom </p>
+      `;
+		</script>
+	</body>
+	<show-hello name="Setemi"></show-hello>
+</html>
