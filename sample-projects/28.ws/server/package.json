@@ -5,6 +5,6 @@
   "author": "Oluwasetemi Ojo <setemiojo@gmail.com> (https://oluwasetemi.dev/)",
   "license": "MIT",
   "dependencies": {
-    "ws": "^7.4.4"
+    "ws": "^7.4.6"
   }
 }
