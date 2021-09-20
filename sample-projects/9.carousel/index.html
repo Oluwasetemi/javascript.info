@@ -1,34 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Carousel</title>
-  <link rel="stylesheet" href="./style.css">
-</head>
-<body>
 
-  <div id="carousel" class="carousel">
-    <button class="arrow prev">⇦</button>
-    <div class="gallery">
-      <ul class="images">
-        <li><img src="https://en.js.cx/carousel/1.png" /></li>
-        <li><img src="https://en.js.cx/carousel/2.png" /></li>
-        <li><img src="https://en.js.cx/carousel/3.png" /></li>
-        <li><img src="https://en.js.cx/carousel/4.png" /></li>
-        <li><img src="https://en.js.cx/carousel/5.png" /></li>
-        <li><img src="https://en.js.cx/carousel/6.png" /></li>
-        <li><img src="https://en.js.cx/carousel/7.png" /></li>
-        <li><img src="https://en.js.cx/carousel/8.png" /></li>
-        <li><img src="https://en.js.cx/carousel/9.png" /></li>
-        <li><img src="https://en.js.cx/carousel/10.png" /></li>
-      </ul>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carousel</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+
+  <body>
+
+    <div id="carousel" class="carousel">
+      <button class="arrow prev">⇦</button>
+      <div class="gallery">
+        <ul class="images">
+          <li><img src="https://en.js.cx/carousel/1.png" /></li>
+          <li><img src="https://en.js.cx/carousel/2.png" /></li>
+          <li><img src="https://en.js.cx/carousel/3.png" /></li>
+          <li><img src="https://en.js.cx/carousel/4.png" /></li>
+          <li><img src="https://en.js.cx/carousel/5.png" /></li>
+          <li><img src="https://en.js.cx/carousel/6.png" /></li>
+          <li><img src="https://en.js.cx/carousel/7.png" /></li>
+          <li><img src="https://en.js.cx/carousel/8.png" /></li>
+          <li><img src="https://en.js.cx/carousel/9.png" /></li>
+          <li><img src="https://en.js.cx/carousel/10.png" /></li>
+        </ul>
+      </div>
+      <button class="arrow next">⇨</button>
     </div>
-    <button class="arrow next">⇨</button>
-  </div>
 
-  <script>
-    // label the images to visually track them, just for convenience,
+    <script>
+      // label the images to visually track them, just for convenience,
       // this code can be removed
       let i = 1;
       for (let li of carousel.querySelectorAll('li')) {
@@ -51,24 +53,26 @@
       carousel.querySelector('.prev').onclick = function () {
         // shift left
         position += width * count;
-        console.log({width, count, position})
+        console.log({ width, count, position })
         // can't move to the left too much, end of images
         position = Math.min(position, 0);
         console.log('==prev==')
-        console.log({position})
+        console.log({ position })
         list.style.marginLeft = position + 'px';
       };
       carousel.querySelector('.next').onclick = function () {
         // shift right
         position -= width * count;
-        console.log({width, count, position})
+        console.log({ width, count, position })
         // can only shift the ribbon for (total ribbon length - visible count) images
         const totalLength = -width * (listElems.length - count);
+        console.log({ totalLength })
         position = Math.max(position, totalLength);
         console.log('==next==')
-        console.log({position})
+        console.log({ position })
         list.style.marginLeft = position + 'px';
       };
-  </script>
-</body>
+    </script>
+  </body>
+
 </html>

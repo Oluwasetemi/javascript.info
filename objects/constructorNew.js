@@ -4,15 +4,14 @@
 // They are named with capital letter first.
 // They should be executed only with "new" operator.
 function User(name, isAdmin = false) {
-  this.name = name;
-this.isAdmin = isAdmin;
-
+	this.name = name;
+	this.isAdmin = isAdmin;
 }
 
 const jack = new User('Jack', true);
 const president = new User('Trump');
-jack
-president
+jack;
+president;
 console.log(jack.name); // Jack
 console.log(jack.isAdmin); // false
 
@@ -24,13 +23,13 @@ console.log(jack.isAdmin); // false
 
 // constructor function code example
 function User2(name) {
-    // const this = {};  (implicitly)
+	// const this = {};  (implicitly)
 
-  // add properties to this
-  this.name = name;
-  this.isAdmin = false;
+	// add properties to this
+	this.name = name;
+	this.isAdmin = false;
 
-    // return this;  (implicitly)
+	// return this;  (implicitly)
 }
 
 // Constructor mode test: new.target
@@ -39,12 +38,12 @@ function User2(name) {
 // It is empty for regular calls and equals the function if called with new
 
 function User3(name) {
-  if (!new.target) {
-    // if you run me without new
-    return new User(name); // ...I will add new for you
-  }
+	if (!new.target) {
+		// if you run me without new
+		return new User(name); // ...I will add new for you
+	}
 
-  this.name = name;
+	this.name = name;
 }
 
 const john = User3('John'); // redirects call to new User
@@ -61,9 +60,9 @@ console.log(john.name); // John
 
 // For instance, here return overrides this by returning an object:
 function BigUser() {
-  this.name = 'John';
+	this.name = 'John';
 
-  return { name: 'Godzilla' }; // <-- returns this object
+	return { name: 'Godzilla' }; // <-- returns this object
 }
 
 console.log(new BigUser().name); // Godzilla, got that object
@@ -71,17 +70,17 @@ console.log(new BigUser().name); // Godzilla, got that object
 
 // Methods in constructor;
 function User4(name) {
-  this.name = name;
+	this.name = name;
 
-  this.sayHi = function() {
-    console.log(`My name is: ${this.name}`);
-  };
+	this.sayHi = function() {
+		console.log(`My name is: ${this.name}`);
+	};
 }
 
 const john2 = new User4('John');
-let obj = new Number(5);
-console.log(typeof obj)
-console.log(Object(5) instanceof Number)
+const obj = new Number(5);
+console.log(typeof obj);
+console.log(Object(5) instanceof Number);
 
 obj instanceof Object;
 

@@ -41,19 +41,12 @@ IncrementCounter.prototype.getValue = function () {
   return this.count;
 } */
 
-
-
-
-
-
-
-
 function IncrementCounter() {
-  this._count = 0;
+	this._count = 0;
 
-  this.increment = function () {
-    return this._count++;
-  }
+	this.increment = function() {
+		return this._count++;
+	};
 }
 
 /* IncrementCounter.prototype.increment = function () {
@@ -61,17 +54,17 @@ function IncrementCounter() {
 } */
 
 Object.defineProperty(IncrementCounter.prototype, 'value', {
-    get: function() {
-        return this._count;
-    },
-    set: function(value) {
-        this._count = value;
-    }
+	get() {
+		return this._count;
+	},
+	set(value) {
+		this._count = value;
+	},
 });
 
 const test = new IncrementCounter();
 // test.setValue(100)
-test.value = 100
+test.value = 100;
 test.increment();
 // console.log(test.getValue());
 console.log(test.value);

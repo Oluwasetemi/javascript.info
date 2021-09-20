@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>PEER to PEER</title>
+	</head>
+	<body>
+		<script>
+			// create PEER Connection
+			const lc = new RTCPeerConnection();
+
+			// create data channel
+			const dc = lc.createDataChannel('channel');
+
+			// events
+			dc.onmessage = (e) => console.log(`computerA: ${e.data}`);
+			dc.onopen = (e) =>
+				console.log(`connection to computer opened: ${e.data}`);
+
+			// onicecandidate
+			lc.onicecandidate = (e) =>
+				console.log(
+					`ice candidate reprinted ${JSON.stringify(
+						lc.localDescription,
+					)}`,
+				);
+
+			// create offer
+			lc.createOffer()
+				.then((o) => lc.setConfiguration(o))
+				.then(() => console.log('offer created'));
+
+			const answer = {};
+
+			// set answer
+			lc.setRemoteDescription(answer).then(() =>
+				console.log('remote description done'),
+			);
+
+			// second computer
+			const rc = new RTCPeerConnection();
+
+			rc.onicecandidate = (e) =>
+				console.log(
+					`ice candidate reprinted ${JSON.stringify(
+						lc.localDescription,
+					)}`,
+				);
+
+			// data channel
+			rc.ondatachannel = (e) => {
+				rc.sm = e.channel;
+				rc.sm.onmessage = e = console.log(`computer B: ${e.data}`);
+				rc.sm.onopen = e = console.log(`computer B opened`);
+			};
+
+			// set offer
+			const offer = {};
+
+			   rc.setRemoteDescription(offer).then(() => console.log(`offer set`))
+
+			   // create answer
+			   rc.
+		</script>
+	</body>
+</html>

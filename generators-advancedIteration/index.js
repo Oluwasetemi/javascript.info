@@ -13,6 +13,7 @@ function* generateSequence() {
 
 // "generator function" creates "generator object"
 const generator = generateSequence();
+// console.log(generator)
 console.log(generator.next()); // [object Generator]
 console.log(generator.next()); // [object Generator]
 console.log(generator.next()); // [object Generator]
@@ -32,12 +33,12 @@ for (const value of generator2) {
 }
 
 // all iterators related method are valid - spread operator
-function* generateSequence() {
+function* generateSequence2() {
   yield 1;
   yield 2;
   yield 3;
 }
-let sequence = [0, ...generateSequence()];sequence
+let sequence = [0, ...generateSequence2()];sequence
 // Using generators for iterables
 // remember this code
 let range = {
