@@ -6,7 +6,7 @@ console.log(typeof String(value), String(value));
 console.log(typeof value.toString());
 console.log(typeof value);
 
-// String conversion is mostly obvious. A false becomes "false", null becomes "null", etc.
+// String conversion is mostly obvious. A false becomes "false", null becomes "null", undefined become 'undefined' etc.
 
 // Number conversion
 // Number() and either parseInt() or parseFloat()
@@ -26,6 +26,7 @@ console.log(Number('   123   ')); // 123
 console.log(Boolean(NaN));
 // Other values become true.
 console.log(Boolean('0'));
+console.log('100' + '0');
 
 console.log(Boolean(1)); // true
 console.log(Boolean(0)); // false
@@ -37,3 +38,8 @@ console.log(Boolean('')); // false
 /*
   This is a multi-line comment
 */
+
+// BIGINT
+const value1 = 12345678901234567890123456789012345678909;
+console.log(typeof value1);
+console.log(typeof BigInt(value1));

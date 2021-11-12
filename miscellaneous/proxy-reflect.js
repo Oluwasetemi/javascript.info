@@ -158,12 +158,12 @@ try {
 for(let key in user) alert(key); // name
 
 // in-range with has trap
-let range = {
-  start: 1,
-  end: 10
-    };
+// let range = {
+//   start: 1,
+//   end: 10
+//     };
 
-    let range = {
+let range = {
   start: 1,
   end: 10
 };
@@ -289,7 +289,7 @@ let admin = {
 // Expected: Admin
 alert(admin.name); // outputs: Guest (?!?)
 
-// slove the problem above
+// solve the problem above
 let user = {
   _name: "Guest",
   get name() {

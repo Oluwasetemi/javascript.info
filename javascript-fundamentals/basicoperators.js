@@ -4,6 +4,8 @@
 // Math operators
 // +,-,/,*,%, **
 
+console.log(5 % 2)
+
 // String concatenation +
 const value = '10';
 
@@ -32,8 +34,8 @@ console.log(+''); // 0
 // modify in place
 let sum = 0;
 
-sum += 2; // sum += 2;
-sum *= 2; // sum *= 2;
+sum += 2; // sum += 2; sum = sum + 2;
+sum *= 2; // sum *= 2; sum = sum * 2;
 sum /= 2; // sum /= 2;
 sum -= 2; // sum -= 2;
 
