@@ -1,5 +1,4 @@
 const assert = require('assert');
-const { globalAgent } = require('http');
 const { sumAsync, subtractAsync } = require('../math')
 
 function expect(result) {

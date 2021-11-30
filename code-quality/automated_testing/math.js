@@ -1,9 +1,9 @@
 // sum is intentionally broken so you can see errors in the tests
 const sum = (a, b) => {
 
-    if (!Number(a) || !Number(b)) {
-        throw new Error(' argument must be numbers alone')
-    }
+    // if (!Number(a) || !Number(b)) {
+    //     throw new Error(' argument must be numbers alone')
+    // }
 
     return a + b
 }

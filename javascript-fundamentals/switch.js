@@ -82,3 +82,15 @@ switch (random) {
     console.log('the dies fell out of the ludo board')
     break;
 }
+
+switch ('key') {
+  case A:
+    console.log('A');
+    break;
+  case B:
+    console.log('B');
+    break;
+
+  default:
+    break;
+}

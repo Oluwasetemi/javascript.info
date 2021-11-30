@@ -1,7 +1,9 @@
 // Function Declaration
 function log(str) {
-  console.log(str);
+  // statements
+  return str;
 }
+
 log('sleep is very important');
 // Local variables - variable within a function
 // Outer variables - variable outside of a function
@@ -12,4 +14,20 @@ log('sleep is very important');
 // Functions == Comments - comments are important and they should explain the function
 
 
-function range(params) {}
+function sum(a = 4, b = 90) {
+  // statement
+  return a + b;
+}
+
+let result = sum();
+console.log(result)
+
+
+function name(params) {
+  // statement
+}
+// XMLHttpRequest - AJAX
+// Fetch - fetch API
+fetch('https://jsonplaceholder.typicode.com/todos/1')
+	.then(response => response.json())
+	.then(json => console.log(json));

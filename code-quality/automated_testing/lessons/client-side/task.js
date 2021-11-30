@@ -18,6 +18,9 @@ describe("Raises x to power n", function () {
     assert.equal(pow(5, -3), 1/125);
   });
 });
+
+
+
 describe("Sum function", function () {
   it('return 7 for 3, 4 ', () => {
     const result = sum(3, 4);
