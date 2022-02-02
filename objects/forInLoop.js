@@ -1,14 +1,14 @@
 // loop thru the properties of an object
 /*
 for (key in object) {
-  // executes the body for each key among object properties
+  executes the body for each key among object properties
 }
 */
 
 const user = {
   name: 'John',
   age: 30,
-  isAdmin: true
+  isAdmin: true,
 };
 
 for (const key in user) {

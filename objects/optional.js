@@ -2,14 +2,14 @@
 
 // understanding the problem
 
-let user = {}; // user has no address
+const user = {}; // user has no address
 
 console.log(user.address.street); // Error!
 
 // Error if the result of querySelector(...) is null
 // let html = document.querySelector('.my-element').innerHTML;
 
-console.log( user && user.address && user.address.street ); // undefined (no error)
+console.log(user && user.address && user.address.street); // undefined (no error)
 
 // short-circuiting
 
@@ -17,19 +17,19 @@ console.log( user && user.address && user.address.street ); // undefined (no err
 
 const user2 = {
   name: 'oluwasetemi',
-  age: false
+  age: false,
 };
 
 console.log(user2?.age ?? 40);
 
-let user3 = {}; // user has no address
+const user3 = {}; // user has no address
 
 console.log(user3?.address?.street); // undefined (no error)
 
 // even works if user is not defined
-let user4 = null;
+const user4 = null;
 
-console.log( user4?.address ); // undefined
+console.log(user4?.address); // undefined
 console.log(user4?.address.street); // undefined
 
 // it works for declared variable
@@ -39,34 +39,34 @@ console.log(user4?.address.street); // undefined
 
 // So, if there are any further function calls or side effects, they don’t occur:
 
-let user5 = null;
+const user5 = null;
 let x = 0;
 
 user5?.sayHi(x++); // nothing happens
 
 console.log(x); // 0, value not incremented
 
-let user6 = {
+const user6 = {
   admin() {
-    console.log("I am admin");
-  }
-}
+    console.log('I am admin');
+  },
+};
 
-let user7 = {};
+const user7 = {};
 
 user6.admin?.(); // I am admin
 user7.admin?.();
 
-let user8 = {
-  firstName: "John"
+const user8 = {
+  firstName: 'John',
 };
 
-let user9 = null; // Imagine, we couldn't authorize the user
+const user9 = null; // Imagine, we couldn't authorize the user
 
-let key = "firstName";
+const key = 'firstName';
 
-console.log( user8?.[key] ); // John
-console.log( user9?.[key] ); // undefined
+console.log(user8?.[key]); // John
+console.log(user9?.[key]); // undefined
 
 console.log(user9?.[key]?.something?.not?.existing); // undefined
 

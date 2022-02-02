@@ -42,11 +42,11 @@ IncrementCounter.prototype.getValue = function () {
 } */
 
 function IncrementCounter() {
-	this._count = 0;
+  this._count = 0;
 
-	this.increment = function() {
-		return this._count++;
-	};
+  this.increment = function () {
+    return this._count++;
+  };
 }
 
 /* IncrementCounter.prototype.increment = function () {
@@ -54,12 +54,12 @@ function IncrementCounter() {
 } */
 
 Object.defineProperty(IncrementCounter.prototype, 'value', {
-	get() {
-		return this._count;
-	},
-	set(value) {
-		this._count = value;
-	},
+  get() {
+    return this._count;
+  },
+  set(value) {
+    this._count = value;
+  },
 });
 
 const test = new IncrementCounter();

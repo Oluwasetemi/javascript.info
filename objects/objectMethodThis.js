@@ -1,12 +1,17 @@
 // Method examples
+// “this” in methods
+// “this” is not bound
+// Arrow functions have no “this”
+
+// Method examples
 const user = {
   name: 'John',
-  age: 30
+  age: 30,
 };
 
 user.occupation = 'thief';
 
-user.sayHi = function() {
+user.sayHi = function () {
   console.log('Hello!');
 };
 
@@ -25,9 +30,13 @@ const user2 = {
   name: 'John',
   age: 30,
   sayHi: () => {
-    console.log('Hello!');
-  }
+    console.log('Hello!', user2.name);
+  },
 };
+
+const copy = Object.assign({}, user2);
+copy.name = 'djcuppy';
+console.log(copy.sayHi())
 
 user2.sayHi(); // Hello!
 
@@ -50,12 +59,14 @@ const user3 = {
   },
 };
 
+const school = 'clinton';
+let user3Clone = { ...user3 };
+user3Clone.school = school;
+user3Clone.name = 'jide';
+console.log(user3Clone.sayHi());
 
-var school = 'clinton'
-console.log()
-
-user3.sayHi();
-user3.sayHello();
+// user3.sayHi();
+// user3.sayHello();
 
 // why this?
 let user4 = {
@@ -63,8 +74,8 @@ let user4 = {
   age: 30,
 
   sayHi() {
-    console.log(this.name); // leads to an error
-  }
+    console.log(user4.name); // leads to an error
+  },
 };
 
 user4.sayHi();
@@ -72,12 +83,12 @@ const new2 = user4;
 // user4 = Object(null);
 
 // new2.name = 'ade';
-console.log(new2)
+console.log(new2);
 new2.sayHi();
 // new2.sayHi();
 
 const admin = user4;
-admin
+admin;
 
 user4 = null; // overwrite to make things obvious
 
@@ -90,13 +101,13 @@ user4 = null; // overwrite to make things obvious
 const obj1 = {
   f: function sayHello() {
     return 'hi';
-  }
+  },
 };
 
 const obj2 = {
   f: function sayHello() {
     return 'hi';
-  }
+  },
 };
 
 console.log(obj1, obj2);
@@ -116,7 +127,7 @@ const user5 = {
   },
   bye() {
     console.log('Bye');
-  }
+  },
 };
 
 // user5.hi(); // John (the simple call works)
@@ -130,7 +141,7 @@ const user6 = {
   name: 'John',
   hi() {
     console.log(this.name);
-  }
+  },
 };
 
 // split getting and calling the method in two lines✅
@@ -143,7 +154,7 @@ const user7 = {
   sayHi: () => {
     const arrow = () => console.log(this.firstName);
     arrow();
-  }
+  },
 };
 
 console.log(user7.sayHi()); // Ilya

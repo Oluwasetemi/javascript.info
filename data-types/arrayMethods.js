@@ -1,17 +1,24 @@
 /* eslint-disable */
 // Add/remove items
 // pop, push, shift and unshift
-// slice
+// slice vs splice
+// creating new array from existing array
 const arr = [1, 2, 3, 4, 5];
+let sliced = arr.slice(0, -2); sliced;
+
 const result = arr.slice(2, 4);
 console.log(result);
+console.log(arr);
 
 const names = ['ade', 'totti', 'temi', 'ayo', 'simi', 'code'];
-names.splice(2, 3, 'ope', 'stephen');
+let deleted = names.splice(2, 3, 'ope', 'stephen');
+deleted
 console.log(names);
 
 names.splice(names.length, 0, 'tola', 'adeMi');
 console.log(names);
+
+
 
 const arr2 = [1, 2];
 
@@ -25,7 +32,10 @@ console.log(arr2.concat([3, 4], [5, 6])); // 1,2,3,4,5,6
 console.log(arr2.concat([3, 4], 5, 6)); // 1,2,3,4,5,6
 // Iterate: forEach
 arr;
-arr.forEach(v => console.log(v + 1));
+arr.forEach((v, i, arrS) => {
+    console.log({v, i, arrS})
+    return v + 1;
+})
 
 const temp = arr.map((v, i) => i + v);
 console.log(temp);
@@ -68,8 +78,9 @@ const findUser = (value, index, array) => {
   return value.id == 2;
 };
 const user = users.find(v => v.name === 'Pete'); // function (v) { return v.name === 'Pete' }
+// const user = users.find(findUser); // function (v) { return v.name === 'Pete' }
 console.log(user);
-const userIndex = users.findIndex(item => item.name == 'Mary');
+const userIndex = users.findIndex(item => item.name == 'Mary');userIndex
 
 console.log(user.name); // John
 console.log(userIndex); // John
@@ -82,6 +93,15 @@ const users2 = [
 
 // returns array of the first two users2
 const someUsers = users2.filter(item => item.id < 3);
+let obj2 = {
+  lessThan2(v) {
+    console.log(v)
+    console.log(this);
+    return v < this.value;
+  }
+};
+let z = arr.filter(obj2.lessThan2, { value: 4 });z
+let z2 = arr.filter(obj2.lessThan2.bind({ value: 4 }));z2
 
 console.log(someUsers); // 2
 
@@ -94,7 +114,11 @@ console.log(lengths); // 5,7,6
 const arr5 = [1, 2, 1, 15];
 
 // the method reorders the content of arr
-arr5.sort();
+arr5.sort(function (a, b) {
+  if (a < b) return -1;
+  if (a > b) return 1;
+  return 0;
+});
 
 console.log(arr5); // 1, 15, 2
 
@@ -104,7 +128,7 @@ function compareNumeric(a, b) {
   if (a < b) return -1;
 }
 
-const arr6 = [1, 2, 15];
+const arr6 = [ 2, 15, 1];
 
 arr6.sort(compareNumeric);
 
@@ -124,6 +148,11 @@ arr7.sort(function(a, b) {
 console.log(arr7); // 1, 2, 15
 
 // use localeCompare for string
+let countries = ['Österreich', 'Andorra', 'Vietnam'];
+let alert = console.log
+alert( countries.sort( (a, b) => a > b ? 1 : -1) ); // Andorra, Vietnam, Österreich (wrong)
+
+alert( countries.sort( (a, b) => a.localeCompare(b) ) ); // Andorra,Österreich,Vietnam
 // reverse
 const arr8 = [1, 2, 3, 4, 5];
 arr8.reverse();
@@ -156,7 +185,19 @@ console.log(strArr.reverse())
 console.log(strArr.join(', '))
 
 // reduce and reduceRight
-const arr10 = [1, 2, 3, 4, 5, 4, 3, 10, 1, 5, 6, 2];
+const arr10 = [1, 2, 3, 4, 5, 4, 3, 10, 1, 5, 6, 2]; let z10 = arr10.reduce((prev, curr) => {
+  console.log(prev)
+  console.log(curr)
+  if (curr in prev) {
+  console.log(curr)
+    prev[curr] += 1;
+  } else {
+    prev[curr] = 1;
+  }
+  // prev.push(curr);
+  return prev;
+  // return prev.push(curr)
+}, {});z10
 // sum = 0; 0 + 1, 1 + 2, 3 + 3
 
 const fruits = ['apple', 'banana', 'orange', 'apple', 'lemon', 'ginger'];
