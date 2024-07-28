@@ -1,0 +1,17 @@
+{
+  "name": "new-begineers-js-projects",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "keywords": [],
+  "author": "Oluwasetemi Ojo <setemiojo@gmail.com> (https://oluwasetemi.dev/)",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^5.3.5",
+    "vite-plugin-list-directory-contents": "^1.4.5"
+  }
+}

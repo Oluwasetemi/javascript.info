@@ -1,0 +1,15 @@
+{
+  "name": "2.canvas-send-image",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Oluwasetemi Ojo <setemiojo@gmail.com> (https://oluwasetemi.dev/)",
+  "license": "MIT",
+  "dependencies": {
+    "file-saver": "^2.0.5"
+  }
+}

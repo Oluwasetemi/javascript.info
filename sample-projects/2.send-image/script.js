@@ -9,6 +9,21 @@ canvasElem.onmousemove = function (e) {
   ctx.lineWidth = 1
   ctx.stroke();
 };
+canvasElem.onmousemove = function (e) {
+  ctx.strokeStyle = 'black';
+  ctx.lineTo((e.clientX - canvasElem.offsetLeft) * 2, (e.clientY - canvasElem.offsetTop) * 2);
+  ctx.lineWidth = 1;
+  ctx.stroke();
+};
+
+function saveAsNew(blob, fileName) {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = fileName;
+  a.click();
+  URL.revokeObjectURL(url);
+}
 
 async function submit() {
   let blob = await new Promise((resolve) =>
@@ -16,7 +31,9 @@ async function submit() {
   );
 
 
+  // can replace saveAs with function
   saveAs(blob, "signature.png");
+  saveAsNew(blob, "signature-new.png");
   uploadFile(blob)
 
 }
